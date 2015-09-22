@@ -1,9 +1,9 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>onto-discovery-api</artifactId>
   <groupId>uk.ac.ebi</groupId>
+  <artifactId>onto-discovery-api</artifactId>
+
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
@@ -11,11 +11,16 @@
   <description>
     A simple API to deal with discovery of ontology terms, based on text annotators, like Bioportal Annotator, or ZOOMA.
   </description>
-  <url>http://github.com/EBIBioSamples/onto-discovery-apit</url>
+  <url>http://github.com/EBIBioSamples/onto-discovery-api</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+
+  <scm>
+  	<developerConnection>scm:git:git@github.com:EBIBioSamples/onto-discovery-api.git</developerConnection>
+    <tag>0.0.1-SNAPSHOT</tag>
+  </scm>   
 
 	<dependencies>
 
@@ -76,6 +81,17 @@
 	        <encoding>utf-8</encoding>
 	      </configuration>
 	    </plugin>
+	    
+			<!-- plugin>
+			  <artifactId>maven-release-plugin</artifactId>
+			  <version>2.4.1</version>
+			  <configuration>
+			    <useReleaseProfile>false</useReleaseProfile>
+			    <releaseProfiles>release</releaseProfiles>
+			    <autoVersionSubmodules>true</autoVersionSubmodules>
+			  </configuration>
+			</plugin -->
+    	    
 
 		</plugins>
 
