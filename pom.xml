@@ -15,12 +15,17 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <github.global.server>github</github.global.server>
   </properties>
 
   <scm>
   	<developerConnection>scm:git:git@github.com:EBIBioSamples/onto-discovery-api.git</developerConnection>
   </scm>   
+
+	<parent>
+	  <groupId>uk.ac.ebi.fg.biosd</groupId>
+	  <artifactId>biosd_deploy</artifactId>
+	  <version>1.0-SNAPSHOT</version>
+	</parent>
 
 	<dependencies>
 
@@ -68,19 +73,6 @@
 	
 	</repositories>
 	
-	<distributionManagement>
-
-		<!-- As per http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github -->
-
-	  <snapshotRepository>
-	    <id>internal.repo</id>
-	    <name>Temporary Staging Repository</name>
-	    <url>file://${project.build.directory}/maven-repo</url>
-	    <uniqueVersion>false</uniqueVersion>
-	  </snapshotRepository>
-	
-	</distributionManagement>
-	
 	
 	<build>
 
@@ -94,32 +86,6 @@
 	        <encoding>utf-8</encoding>
 	      </configuration>
 	    </plugin>
-	    
-
-			<!-- As per http://stackoverflow.com/questions/14013644/hosting-a-maven-repository-on-github -->
-			<plugin>
-	      <groupId>com.github.github</groupId>
-	      <artifactId>site-maven-plugin</artifactId>
-	      <version>0.11</version>
-	      <configuration>
-	        <message>Maven artifacts for ${project.version}</message>  <!-- git commit message -->
-	        <noJekyll>true</noJekyll>                                  <!-- disable webpage processing -->
-	        <outputDirectory>${project.build.directory}/maven-repo</outputDirectory>
-	        <branch>refs/heads/maven-repo</branch>
-	        <includes><include>**/*</include></includes>
-	        <repositoryName>EBIBioSamples.github.io</repositoryName>      <!-- github repo name -->
-	        <repositoryOwner>EBIBioSamples</repositoryOwner>    <!-- github username  -->
-	      </configuration>
-	      <executions>
-	        <!-- run site-maven-plugin's 'site' target as part of the build's normal 'deploy' phase -->
-	        <execution>
-	          <goals>
-	            <goal>site</goal>
-	          </goals>
-	          <phase>deploy</phase>
-	        </execution>
-	      </executions>
-      </plugin>    	    
 
 		</plugins>
 
