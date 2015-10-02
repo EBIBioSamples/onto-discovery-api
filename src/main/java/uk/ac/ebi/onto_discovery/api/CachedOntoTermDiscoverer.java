@@ -96,4 +96,24 @@ public class CachedOntoTermDiscoverer extends OntologyTermDiscoverer
 	public void clearCache () {
 		cache.clear ();
 	}
+
+	/**
+	 * Provides the base discoverer used in this cached discoverer, which might be useful
+	 * for tasks like tuning paramters.
+	 * 
+	 */
+	public OntologyTermDiscoverer getBaseDiscoverer ()
+	{
+		return base;
+	}
+
+	/**
+	 * Provides the cache being used in this discoverer. 
+	 */
+	public OntoTermDiscoveryCache getCache ()
+	{
+		return cache;
+	}
+
+
 }
