@@ -2,10 +2,11 @@ package uk.ac.ebi.onto_discovery.api;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.lang3.StringUtils;
 
-import uk.ac.ebi.utils.memory.SimpleCache;
+import com.google.common.cache.CacheBuilder;
 
 /**
  * A memory cache, based on {@link Map}.
@@ -24,11 +25,16 @@ public class OntoTermDiscoveryMemCache extends OntoTermDiscoveryCache
 	}
 
 	/**
-	 * Uses {@link SimpleCache} with a size of 500k entries.
+	 * Uses {@link CacheBuilder} with a size of 500k entries and expire time of 4h.
 	 */
+	@SuppressWarnings ( { "unchecked", "rawtypes" } )
 	public OntoTermDiscoveryMemCache ()
 	{
-		this ( new SimpleCache<String, List<DiscoveredTerm>> ( (int) 500E3 ) );
+		this ( ( (CacheBuilder) CacheBuilder.newBuilder () 
+			.maximumSize ( 10 ) 
+			.expireAfterWrite ( 4, TimeUnit.HOURS ) )
+			.build ().asMap ()
+		);
 	}
 	
 	@Override
