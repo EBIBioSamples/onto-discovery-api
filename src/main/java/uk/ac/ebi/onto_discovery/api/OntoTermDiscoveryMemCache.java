@@ -31,7 +31,7 @@ public class OntoTermDiscoveryMemCache extends OntoTermDiscoveryCache
 	public OntoTermDiscoveryMemCache ()
 	{
 		this ( ( (CacheBuilder) CacheBuilder.newBuilder () 
-			.maximumSize ( 10 ) 
+			.maximumSize ( (long) 500E3 ) 
 			.expireAfterWrite ( 4, TimeUnit.HOURS ) )
 			.build ().asMap ()
 		);
