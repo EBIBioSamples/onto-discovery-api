@@ -7,7 +7,7 @@ import java.util.Set;
 
 
 /**
- * TODO: comment me!
+ * An advanced version of {@link ChainedOntoTermDiscoverer}, which factorise on duplicated results.
  *
  * @author brandizi
  * <dl><dt>Date:</dt><dd>8 Dec 2015</dd></dl>
@@ -20,7 +20,13 @@ public class MergingChainedOntoTermDiscoverer extends ChainedOntoTermDiscoverer
 	{
 		super ( discoverers );
 	}
-
+	
+	
+	/**
+	 * Invokes the discoverers in passed by the constructor, in the order they are listed, and ignoring the terms that 
+	 * have already been found (so, discoverers on top of the list have priority).
+	 *   
+	 */
 	@Override
 	public List<DiscoveredTerm> getOntologyTerms ( String valueLabel, String typeLabel ) throws OntologyDiscoveryException
 	{

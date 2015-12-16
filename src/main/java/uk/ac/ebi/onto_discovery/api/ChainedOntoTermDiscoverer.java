@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * TODO: comment me!
+ * Returns the concatenation of all the terms that were discovered in an underline arrays of discoverers.
  *
  * @author brandizi
  * <dl><dt>Date:</dt><dd>8 Dec 2015</dd></dl>
