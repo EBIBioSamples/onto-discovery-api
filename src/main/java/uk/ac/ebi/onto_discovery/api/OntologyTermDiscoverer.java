@@ -25,31 +25,29 @@ public class OntologyTermDiscoverer
 		private String iri;
 		private Double score;
 		private String label;
+		private String provenance;
 		
-		public DiscoveredTerm ( String iri, Double score, String label )
+		
+		public DiscoveredTerm ( String iri, Double score, String label, String provenace )
 		{
 			super ();
 			this.iri = iri;
 			this.score = score;
 			this.label = label;
+			this.provenance = provenace;
 		}
 
+		public DiscoveredTerm ( String iri, Double score, String label )
+		{
+			this ( iri, score, label, null );
+		}
+
+		
 		public DiscoveredTerm ( String iri, Double score )
 		{
 			this ( iri, score, null );
 		}
-
-		public DiscoveredTerm ( String iri, Float score, String label )
-		{
-			this ( iri, score.doubleValue (), label );
-		}
-
-		public DiscoveredTerm ( String iri, Float score )
-		{
-			this ( iri, score.doubleValue () );
-		}
-		
-		
+				
 		
 		public String getIri ()
 		{
@@ -65,11 +63,15 @@ public class OntologyTermDiscoverer
 		{
 			return label;
 		}
-
 		
+		public String getProvenance ()
+		{
+			return provenance;
+		}
+
 		@Override
 		public String toString () {
-			return String.format ( "<%s> '%s' (%f)", getIri (), getLabel (), getScore () );
+			return String.format ( "<%s> '%s' (%f, prov: '%s')", getIri (), getLabel (), getScore (), getProvenance () );
 		}
 
 	}
