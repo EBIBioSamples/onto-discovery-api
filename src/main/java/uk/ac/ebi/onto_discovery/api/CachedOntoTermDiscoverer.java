@@ -20,9 +20,8 @@ import uk.ac.ebi.utils.memory.SimpleCache;
  * @author Marco Brandizi
  *
  */
-public class CachedOntoTermDiscoverer extends OntologyTermDiscoverer
+public class CachedOntoTermDiscoverer extends OntoTermDiscovererFilter
 {
-	private final OntologyTermDiscoverer base;
 	private final OntoTermDiscoveryCache cache;
 	private final Logger log = LoggerFactory.getLogger ( this.getClass () );
 
@@ -31,6 +30,8 @@ public class CachedOntoTermDiscoverer extends OntologyTermDiscoverer
 	public CachedOntoTermDiscoverer ( OntologyTermDiscoverer base, OntoTermDiscoveryCache cache ) 
 		throws IllegalArgumentException
 	{
+		super ( base );
+		
 		if ( base == null ) throw new IllegalArgumentException ( 
 			"A cached ontology term discoverer needs a non-null base discoverer" 
 		);
