@@ -87,8 +87,9 @@ public class CachedOntoTermDiscoverer extends OntoTermDiscovererFilter
 			if ( log.isTraceEnabled () ) log.trace ( 
 				"Returning and caching '" + abbreviate ( result.toString (), 50 ) + "' for '{}:{}'", typeLabel, valueLabel 
 			);
-			
-			cache.save ( valueLabel, typeLabel, result );
+		if(result != null && result.size() != 0) {
+			cache.save(valueLabel, typeLabel, result);
+		}
 			return result;
 			
   	} // synchronized sequence
