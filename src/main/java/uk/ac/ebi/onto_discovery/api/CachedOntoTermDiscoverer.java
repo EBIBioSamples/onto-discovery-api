@@ -67,7 +67,7 @@ public class CachedOntoTermDiscoverer extends OntoTermDiscovererFilter
   	synchronized ( synch )
   	{
 			List<DiscoveredTerm> result = cache.getOntologyTerms ( valueLabel, typeLabel );
-			if ( result != null )
+			if ( result != null && result.size() != 0 )
 			{
 				if ( log.isTraceEnabled () )
 					log.trace ( 
@@ -78,7 +78,7 @@ public class CachedOntoTermDiscoverer extends OntoTermDiscovererFilter
 			}
 			
 			result = base.getOntologyTerms ( valueLabel, typeLabel );
-			if ( result == null ) 
+			if ( result == null )
 			{
 				log.trace ( "Null result for '{}:{}', turning it into an empty list", typeLabel, valueLabel );
 				result = NULL_RESULT;
@@ -87,9 +87,9 @@ public class CachedOntoTermDiscoverer extends OntoTermDiscovererFilter
 			if ( log.isTraceEnabled () ) log.trace ( 
 				"Returning and caching '" + abbreviate ( result.toString (), 50 ) + "' for '{}:{}'", typeLabel, valueLabel 
 			);
-		if(result != null && result.size() != 0) {
 			cache.save(valueLabel, typeLabel, result);
-		}
+
+
 			return result;
 			
   	} // synchronized sequence

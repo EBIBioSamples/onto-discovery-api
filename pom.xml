@@ -20,6 +20,12 @@
   	<developerConnection>scm:git:git@github.com:EBIBioSamples/onto-discovery-api.git</developerConnection>
   </scm>
 
+	<parent>
+	  <groupId>uk.ac.ebi.fg.biosd</groupId>
+	  <artifactId>biosd_deploy</artifactId>
+	  <version>1.0-SNAPSHOT</version>
+	</parent>
+
 	<dependencies>
 
 	  <dependency>
